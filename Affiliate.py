@@ -1,65 +1,91 @@
 import streamlit as st
-import urllib.parse
 from PIL import Image
 
 # --- SEITENKONFIGURATION ---
 st.set_page_config(
-    page_title="Mannschaftskasse Aufpolierer",
+    page_title="Basketball Essentials & Empfehlungen",
     page_icon="🏀",
     layout="centered"
 )
 
-# --- BILD UND TITEL ---
-
+# --- HEADER UND BILD ---
 col1, col2 = st.columns([1, 2])
 
 with col1:
     try:
-        image = Image.open('KFB3.jpg')
+        image = Image.open("KFB3.jpg")
         st.image(image)
     except FileNotFoundError:
         st.error("Bild 'KFB3.jpg' nicht gefunden.")
 
 with col2:
-    st.write("")
-    st.write("")
-    st.header("Alles für den KFB!")
+    st.title("🏀 Basketball Essentials")
+    st.caption("Meine persönlichen Empfehlungen rund ums Training, Coaching & Teamplay")
 
-st.title("🏀 Mannschaftskasse aufpolieren!")
+st.markdown("---")
+
+# --- EINLEITUNG ---
 st.markdown(
     """
-    Generiert für jeden Einkauf über Amazon einen kleinen Bonus für die Teamkasse.  
-    **Transparenzhinweis:** Diese Website enthält sogenannte *Affiliate-Links*.  
+    Willkommen auf meiner kleinen Empfehlungsseite rund um Basketball-Training, Coaching und Teamausrüstung.  
+    Ich teile hier einige Produkte, die ich selbst nutze oder für sinnvoll halte – egal ob du Trainer, Spieler oder einfach Fan bist.  
+    """
+)
+
+st.info(
+    """
+    **Transparenzhinweis:**  
+    Einige Links auf dieser Seite sind sogenannte *Affiliate-Links*.  
+    Wenn du über diese Links bei Amazon einkaufst, erhalte ich eine kleine Provision.  
+    Für dich entstehen dabei **keine Mehrkosten**.  
     Als Amazon-Partner verdiene ich an qualifizierten Verkäufen.
     """
 )
 
-# --- AMAZON AFFILIATE LINK GENERATOR ---
-st.header("1. Amazon Affiliate-Link erstellen")
-
-# Dein Amazon-Partner-Tag
-affiliate_tag = "affiliatesche-21"  # <- Anpassen, falls sich euer Tag ändert
-
-# Eingabefeld
-search_term = st.text_input(
-    "Was möchtet ihr bei Amazon suchen?",
-    placeholder="z.B. Nike Basketball, Taktiktafel, etc."
-)
-
-# Button zum Generieren
-if st.button("Link für die Mannschaftskasse generieren"):
-    if search_term:
-        encoded_search_term = urllib.parse.quote_plus(search_term)
-        amazon_link = f"https://www.amazon.de/s?k={encoded_search_term}&tag={affiliate_tag}"
-        st.success("Erfolgreich erstellt! Kopiert diesen Link und teilt ihn:")
-        st.code(amazon_link, language="text")
-        st.markdown(f"➡️ **[Hier klicken, um den Link zu testen]({amazon_link})**")
-    else:
-        st.warning("Bitte gebt einen Suchbegriff ein, um einen Link zu erstellen.")
-
-# --- FOOTER / RECHTLICHE HINWEISE ---
 st.markdown("---")
 
+# --- EMPFEHLUNGEN ---
+st.header("🏋️‍♂️ Training & Ausrüstung")
+
+st.markdown(
+    """
+    **1. Taktiktafel für Trainer**  
+    Eine gute Taktiktafel ist Gold wert – besonders im Jugendtraining oder bei Auswärtsspielen.  
+    [➡️ Jetzt ansehen auf Amazon](https://www.amazon.de/dp/B0BMMT9Q5P?tag=affiliatesche-21)
+    """
+)
+
+st.markdown(
+    """
+    **2. Offizieller Wettkampfball**  
+    Der *Molten BG4500* ist mein persönlicher Favorit – perfektes Grip, robust und FIBA-approved.  
+    [➡️ Zum Molten BG4500 auf Amazon](https://www.amazon.de/dp/B07V6P6XZ8?tag=affiliatesche-21)
+    """
+)
+
+st.markdown(
+    """
+    **3. Sporttasche mit Nassfach**  
+    Ideal für Turniere und Auswärtsspiele – hält Schmutzwäsche getrennt vom Rest.  
+    [➡️ Zur Sporttasche auf Amazon](https://www.amazon.de/dp/B08M9HPF61?tag=affiliatesche-21)
+    """
+)
+
+st.markdown("---")
+
+st.header("💡 Tipps für Basketball-Teams")
+
+st.markdown(
+    """
+    - 🧺 **Regelmäßig die Ausrüstung checken:** Viele Teams vernachlässigen Bälle, Pumpen oder Erste-Hilfe-Sets.  
+    - 📱 **Digitale Trainingsplanung:** Nutzt Tools wie Trello oder Google Sheets, um Anwesenheit & Übungen zu koordinieren.  
+    - 🏆 **Teamgeist vor Technik:** Investiere in Dinge, die Motivation und Zusammenhalt fördern.
+    """
+)
+
+st.markdown("---")
+
+# --- FOOTER / IMPRESSUM ---
 st.info(
     """
     **Impressum (§ 5 TMG):**  
@@ -71,16 +97,16 @@ st.info(
     📧 E-Mail: [niklasschelkle@gmail.com](mailto:niklasschelkle@gmail.com)
 
     **Verantwortlich für den Inhalt nach § 55 Abs. 2 RStV:**  
-    Niklas Schelkle
+    Niklas Schelkle  
 
-    **Affiliate-Transparenz:**  
+    **Affiliate-Hinweis:**  
     Als Amazon-Partner verdiene ich an qualifizierten Verkäufen.  
-    Für euch entstehen dadurch *keine Mehrkosten*.
+    Für dich entstehen keine Mehrkosten.  
 
     **Datenschutz:**  
-    Diese Seite verwendet keine Cookies oder Tracking außerhalb des Amazon-Partnerprogramms.  
-    Beim Klick auf einen Amazon-Link werden Cookies von Amazon gesetzt, um den Einkauf korrekt zuordnen zu können.  
-    Weitere Informationen findet ihr in der [Datenschutzerklärung von Amazon](https://www.amazon.de/gp/help/customer/display.html?nodeId=201909010).
+    Diese Seite verwendet keine Cookies oder Tracking außerhalb der von Amazon gesetzten Cookies,  
+    die für die Zuordnung von Einkäufen erforderlich sind.  
+    Weitere Informationen findest du in der [Amazon-Datenschutzerklärung](https://www.amazon.de/gp/help/customer/display.html?nodeId=201909010).
 
     **Haftungsausschluss:**  
     Trotz sorgfältiger inhaltlicher Kontrolle übernehme ich keine Haftung  
@@ -90,3 +116,4 @@ st.info(
 
 st.markdown("---")
 st.caption("© 2025 Niklas Schelkle – Alle Rechte vorbehalten.")
+
